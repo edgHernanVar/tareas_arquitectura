@@ -1,0 +1,56 @@
+ley de mooore
+
+1er simulacion
+
+CHIP Mux {
+    IN x,y;
+    OUT f;
+
+    PARTS:
+    //// Replace this comment with your code.
+   And(a= x, b= y, out= xandy);
+   Not(in= xandy, out= f);
+
+}
+
+2nda
+
+CHIP Mux {
+    IN x,y;
+    OUT f;
+
+    PARTS:
+    //// Replace this comment with your code.
+   Not(in= x, out= notx);
+   Not(in= y, out= noty);
+   Or(a= notx, b= noty, out= f);
+
+}
+
+
+3ra
+
+CHIP Mux {
+    IN x,y;
+    OUT f;
+
+    PARTS:
+    //// Replace this comment with your code.
+   Or(a= x, b= y, out= xory);
+   Not(in= xory, out= f);
+
+}
+
+4ta
+
+CHIP Mux {
+    IN x,y;
+    OUT f;
+
+    PARTS:
+    //// Replace this comment with your code.
+   Not(in= x, out= notx);
+   Not(in= y, out= noty);
+    And(a= notx, b= noty, out= f);
+
+}
