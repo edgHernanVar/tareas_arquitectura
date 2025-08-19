@@ -1,0 +1,18 @@
+CHIP Mux {
+    IN x,y,z;
+    OUT f1,f2;
+
+    PARTS:
+    //// Replace this comment with your code.
+    Not(in= x, out= notx);
+    Not(in= y, out= noty);
+    Not(in= z, out= notz);
+    //primera funcion
+    And(a= x, b= noty, out= xandnoty);
+    Or(a= notx, b= xandnoty, out= notxorand);
+    And(a= notz, b= notxorand, out= f1);
+    //segunda funcion
+    And(a= x, b= y, out= xandy);
+    Or(a= notx, b= xandy, out= f2);
+
+}
