@@ -1,0 +1,63 @@
+Demostracion teorema, cualquier compuerta logica puede ser implementada con Nand
+
+CHIP Not {
+    IN in;
+    OUT out;
+
+    PARTS:
+    //// Replace this comment with your code.
+    Nand(a= in, b= in, out= out);
+}
+
+
+CHIP And{
+    IN x,y;
+    OUT f;
+    
+    PARTS:
+    //// Replace this comment with your code.
+   Nand(a= x, b= y, out= nandxy);
+   Nand(a= nandxy, b= nandxy, out= f);
+
+
+}
+
+CHIP Or {
+    IN a, b;
+    OUT out;
+
+    PARTS:
+    //// Replace this comment with your code.
+
+    Nand(a= a, b= a, out= nota);
+    Nand(a= b, b= b, out= notb);
+    Nand(a= nota, b= notb, out= notaandnotb);
+    Nand(a= notaandnotb, b= notaandnotb, out= dobleNegacion);
+    Nand(a= dobleNegacion, b= dobleNegacion, out= out);
+}
+
+Demostracion Multiplexion y deMultiplexion:
+
+CHIP Mux {
+    IN a,b,sel;
+    OUT out;
+
+    PARTS:
+    //// Replace this comment with your code.
+    Not(in= sel, out= notsel);
+    And(a= notsel, b= a, out= notselA);
+    And(a= sel, b= b, out= selandb);
+    Or(a= notselA, b= selandb, out= out);
+
+}
+
+CHIP DMux {
+    IN in, sel;
+    OUT a, b;
+
+    PARTS:
+    //// Replace this comment with your code.
+    Not(in= sel, out= notsel);
+    And(a= in, b= notsel, out= a);
+    And(a= in, b= sel, out= b);
+}
